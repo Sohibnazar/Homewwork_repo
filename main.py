@@ -35,9 +35,9 @@ for col in X.select_dtypes(include=['object']).columns:
     le = LabelEncoder()
     X_le[col] = le.fit_transform(X[col])
 
-scalers =StandardScaler()
+scaler = StandardScaler()
 num_cols = X.select_dtypes(include=[np.number]).columns.tolist()
-X_le[num_cols] = scaler.fit_transform(X_le[num_cols])
+X_le[num_cols] = scaler.fit_transform(X_le[num_cols]) 
  
 X_train, X_test, y_train, y_test = train_test_split(
     X_le, y, test_size=0.2, stratify=y, random_state=42
