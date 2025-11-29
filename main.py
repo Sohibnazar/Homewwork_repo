@@ -35,7 +35,10 @@ for col in X.select_dtypes(include=['object']).columns:
     le = LabelEncoder()
     X_le[col] = le.fit_transform(X[col])
 
-scaler = StandardScaler()
+scalers = {col: StandardScaler().fit(X_train[[col]]) for col in num_cols}
+for col in num_cols:
+    input_df[col] = scalers[col].transform(input_df[[col]])
+
 num_cols = X.select_dtypes(include=[np.number]).columns.tolist()
 X_le[num_cols] = scaler.fit_transform(X_le[num_cols])
  
