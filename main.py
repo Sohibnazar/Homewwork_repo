@@ -12,7 +12,7 @@ def load_data():
     return df
 
 df = load_data()
-st.title("Bank Marketing KNN Prediction")
+st.title("Прогноз банковской кампании (KNN)")
 st.subheader("Исходные данные")
 st.dataframe(df.head())
  
